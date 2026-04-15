@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allnodes — Non-Custodial Staking & Validator Hosting for 120+ Networks</title>
+    <meta name="description" content="Allnodes offers non-custodial staking, validator hosting, and node services for 120+ blockchain networks. $3B+ managed assets, 0% fee staking, starting at $5/month.">
+    <link rel="canonical" href="https://allnodes-site.github.io">
+    <meta property="og:title" content="Allnodes — Non-Custodial Staking & Validator Hosting">
+    <meta property="og:description" content="Stake confidently with Allnodes. 120+ networks, bare-metal servers, 0% fee validators. Starting at $5/month.">
+    <meta property="og:url" content="https://allnodes-site.github.io">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Allnodes — Non-Custodial Staking & Validator Hosting">
+    <meta name="twitter:description" content="120+ networks, $3B+ managed assets, 0% fee staking. Starting at $5/month.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0B0F1A;
+            --color-bg-card: #131828;
+            --color-bg-elevated: #1A2035;
+            --color-bg-gradient: linear-gradient(180deg, #0B0F1A 0%, #111827 100%);
+            --color-text: #F0F2F5;
+            --color-text-secondary: #8B95A8;
+            --color-accent: #2DD4A8;
+            --color-accent-hover: #25B892;
+            --color-accent-soft: rgba(45, 212, 168, 0.1);
+            --color-accent-glow: rgba(45, 212, 168, 0.15);
+            --color-border: rgba(255,255,255,0.08);
+            --color-border-hover: rgba(45, 212, 168, 0.3);
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 50px;
+            --shadow-card: 0 4px 24px rgba(0,0,0,0.2);
+            --shadow-glow: 0 0 40px rgba(45, 212, 168, 0.08);
+            --max-width: 1140px;
+            --spacing-section: 100px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(11,15,26,0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .nav-inner {
+            max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+            display: flex; align-items: center; justify-content: space-between; height: 72px;
+        }
+        .nav-logo {
+            font-size: 1.25rem; font-weight: 800; color: var(--color-text);
+            text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .nav-logo-icon {
+            width: 32px; height: 32px; background: var(--color-accent);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.1rem; color: var(--color-bg);
+        }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a {
+            color: var(--color-text-secondary); text-decoration: none; font-size: 0.92rem;
+            font-weight: 500; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--color-text); }
+        .nav-cta {
+            background: var(--color-accent); color: var(--color-bg); padding: 10px 24px;
+            border-radius: var(--radius-full); font-weight: 700; font-size: 0.9rem;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .nav-cta:hover { background: var(--color-accent-hover); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: var(--color-text); margin: 5px 0; transition: 0.3s; }
+
+        .hero {
+            padding: 160px 0 100px;
+            background: var(--color-bg-gradient);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -200px; right: -200px;
+            width: 600px; height: 600px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(45,212,168,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--color-accent-soft); color: var(--color-accent);
+            padding: 8px 20px; border-radius: var(--radius-full);
+            font-size: 0.85rem; font-weight: 600; margin-bottom: 28px;
+            border: 1px solid rgba(45,212,168,0.2);
+        }
+        .hero h1 {
+            font-size: 3.5rem; font-weight: 800; line-height: 1.08;
+            letter-spacing: -0.03em; margin-bottom: 20px; max-width: 720px;
+        }
+        .hero h1 span { color: var(--color-accent); }
+        .hero p {
+            font-size: 1.15rem; color: var(--color-text-secondary);
+            max-width: 540px; line-height: 1.7; margin-bottom: 40px;
+        }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--color-accent); color: var(--color-bg); padding: 15px 36px;
+            border-radius: var(--radius-full); font-weight: 700; font-size: 1rem;
+            text-decoration: none; transition: all 0.2s; border: none; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+        .btn-secondary {
+            background: transparent; color: var(--color-text); padding: 15px 36px;
+            border-radius: var(--radius-full); font-weight: 600; font-size: 1rem;
+            text-decoration: none; border: 1.5px solid var(--color-border); transition: all 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+        .hero-stats {
+            display: flex; gap: 48px; margin-top: 64px; padding-top: 40px;
+            border-top: 1px solid var(--color-border);
+        }
+        .hero-stat-value { font-size: 2rem; font-weight: 800; color: var(--color-accent); }
+        .hero-stat-label { font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 4px; }
+
+        section { padding: var(--spacing-section) 0; }
+        .section-label {
+            display: inline-block; color: var(--color-accent); font-size: 0.8rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 2.4rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px;
+        }
+        .section-subtitle { font-size: 1.05rem; color: var(--color-text-secondary); max-width: 540px; line-height: 1.7; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header .section-subtitle { margin: 0 auto; }
+
+        .services { background: var(--color-bg-card); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .service-card {
+            background: var(--color-bg-elevated); border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg); padding: 40px 28px; transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: var(--color-accent); opacity: 0; transition: opacity 0.3s;
+        }
+        .service-card:hover { border-color: var(--color-border-hover); transform: translateY(-4px); }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon {
+            width: 52px; height: 52px; border-radius: var(--radius-md);
+            background: var(--color-accent-soft); display: flex; align-items: center;
+            justify-content: center; margin-bottom: 24px; font-size: 1.5rem;
+        }
+        .service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; }
+        .service-card p { font-size: 0.92rem; color: var(--color-text-secondary); line-height: 1.7; }
+
+        .networks-section { position: relative; }
+        .networks-scroll {
+            display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px;
+        }
+        .network-chip {
+            background: var(--color-bg-card); border: 1px solid var(--color-border);
+            border-radius: var(--radius-md); padding: 20px 16px; text-align: center;
+            transition: all 0.3s; cursor: default;
+        }
+        .network-chip:hover { border-color: var(--color-accent); background: var(--color-bg-elevated); }
+        .network-chip-icon {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--color-accent-soft); margin: 0 auto 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.85rem; color: var(--color-accent);
+        }
+        .network-chip-name { font-size: 0.82rem; font-weight: 600; }
+        .network-chip-apy { font-size: 0.75rem; color: var(--color-accent); margin-top: 4px; }
+
+        .features { background: var(--color-bg-card); }
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .feature-row {
+            display: flex; align-items: flex-start; gap: 20px;
+            background: var(--color-bg-elevated); border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg); padding: 32px 28px; transition: all 0.3s;
+        }
+        .feature-row:hover { border-color: var(--color-border-hover); }
+        .feature-num {
+            width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+            background: var(--color-accent); color: var(--color-bg);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.9rem;
+        }
+        .feature-row h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-row p { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.7; }
+
+        .pricing { text-align: center; }
+        .pricing-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .pricing-card {
+            background: var(--color-bg-card); border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg); padding: 40px 28px; transition: all 0.3s;
+        }
+        .pricing-card.featured { border-color: var(--color-accent); position: relative; }
+        .pricing-card.featured::before {
+            content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--color-accent); color: var(--color-bg); padding: 4px 16px;
+            border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700;
+        }
+        .pricing-card:hover { border-color: var(--color-border-hover); transform: translateY(-4px); }
+        .pricing-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+        .pricing-price { font-size: 2.4rem; font-weight: 800; margin: 16px 0 4px; }
+        .pricing-price span { font-size: 1rem; font-weight: 500; color: var(--color-text-secondary); }
+        .pricing-desc { font-size: 0.85rem; color: var(--color-text-secondary); margin-bottom: 24px; }
+        .pricing-list { list-style: none; text-align: left; margin-bottom: 28px; }
+        .pricing-list li {
+            font-size: 0.9rem; color: var(--color-text-secondary); padding: 8px 0;
+            border-bottom: 1px solid var(--color-border); display: flex; align-items: center; gap: 8px;
+        }
+        .pricing-list li::before { content: '✓'; color: var(--color-accent); font-weight: 700; }
+        .pricing-card .btn-primary { display: block; text-align: center; }
+
+        .security-banner {
+            background: linear-gradient(135deg, #131828 0%, #1A2540 50%, #0F1925 100%);
+            border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+            padding: 64px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+        }
+        .security-points { list-style: none; }
+        .security-points li {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 14px 0; font-size: 0.95rem; color: var(--color-text-secondary); line-height: 1.6;
+        }
+        .security-check {
+            width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+            background: var(--color-accent-soft); color: var(--color-accent);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.8rem;
+        }
+
+        .faq { background: var(--color-bg-card); }
+        .faq-list { max-width: 740px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--color-border); }
+        .faq-question {
+            width: 100%; background: none; border: none; padding: 24px 0;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; font-family: var(--font-primary); font-size: 1.05rem;
+            font-weight: 600; color: var(--color-text); text-align: left;
+        }
+        .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--color-accent); transition: 0.2s; }
+        .faq-item.active .faq-question::after { content: '−'; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-answer p { padding: 0 0 24px; color: var(--color-text-secondary); font-size: 0.95rem; line-height: 1.7; }
+        .faq-item.active .faq-answer { max-height: 300px; }
+
+        .cta-section {
+            text-align: center; padding: 80px 0;
+            background: radial-gradient(ellipse at center, rgba(45,212,168,0.04) 0%, transparent 70%);
+        }
+        .cta-section h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; }
+        .cta-section p { font-size: 1.1rem; color: var(--color-text-secondary); margin-bottom: 32px; }
+
+        footer {
+            background: #070A12; border-top: 1px solid var(--color-border);
+            padding: 60px 0 32px; color: var(--color-text-secondary);
+        }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer-brand p { font-size: 0.88rem; line-height: 1.7; margin-top: 12px; max-width: 280px; }
+        .footer-col h4 { color: var(--color-text); font-size: 0.85rem; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em; }
+        .footer-col a { display: block; color: var(--color-text-secondary); text-decoration: none; font-size: 0.88rem; margin-bottom: 10px; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--color-accent); }
+        .footer-bottom {
+            border-top: 1px solid var(--color-border); padding-top: 24px;
+            display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.4rem; }
+            .section-title { font-size: 1.9rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .networks-scroll { grid-template-columns: repeat(3, 1fr); }
+            .pricing-cards { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .security-banner { grid-template-columns: 1fr; padding: 40px 28px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+            .hero-stats { gap: 32px; }
+        }
+
+        @media (max-width: 640px) {
+            :root { --spacing-section: 64px; }
+            .nav-links {
+                display: none; position: fixed; top: 72px; left: 0; right: 0;
+                background: var(--color-bg); flex-direction: column; padding: 24px;
+                gap: 16px; border-bottom: 1px solid var(--color-border);
+            }
+            .nav-links.active { display: flex; }
+            .hamburger { display: block; }
+            .hero { padding: 120px 0 64px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .networks-scroll { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","name":"Allnodes","url":"https://allnodes-site.github.io","description":"Non-custodial staking, validator hosting, and node services for 120+ blockchain networks."}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Allnodes?","acceptedAnswer":{"@type":"Answer","text":"Allnodes is a non-custodial platform for staking and node hosting across more than 120 blockchain networks. Users retain full control of their private keys."}},{"@type":"Question","name":"Is Allnodes safe?","acceptedAnswer":{"@type":"Answer","text":"Allnodes is non-custodial with ISO 27001-certified data centers, hardware wallet support, and multilayered monitoring."}},{"@type":"Question","name":"How much does Allnodes cost?","acceptedAnswer":{"@type":"Answer","text":"Staking starts at $5/month with 0% validator commission. Hourly billing is also available."}},{"@type":"Question","name":"Which networks are supported?","acceptedAnswer":{"@type":"Answer","text":"Over 120 networks including Ethereum, Solana, Cosmos, Polkadot, Cardano, Avalanche, and many more."}}]}
+    </script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="https://allnodes-site.github.io" class="nav-logo">
+            <div class="nav-logo-icon">A</div>
+            Allnodes
+        </a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#networks">Networks</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="CTA_LINK" class="nav-cta">Sign Up</a>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">&#9889; Top-Ranked Verified Provider</div>
+        <h1>Non-Custodial Staking & <span>Validator Hosting</span> for 120+ Networks</h1>
+        <p>Stake confidently with industry-leading security, bare-metal Solana servers, and zero-fee staking. Trusted for over $3B in managed assets — starting at just $5/month.</p>
+        <div class="hero-buttons">
+            <a href="CTA_LINK" class="btn-primary">Start Staking</a>
+            <a href="#services" class="btn-secondary">Explore Services</a>
+        </div>
+        <div class="hero-stats">
+            <div>
+                <div class="hero-stat-value">120+</div>
+                <div class="hero-stat-label">Supported Networks</div>
+            </div>
+            <div>
+                <div class="hero-stat-value">$3B+</div>
+                <div class="hero-stat-label">Managed Assets</div>
+            </div>
+            <div>
+                <div class="hero-stat-value">0%</div>
+                <div class="hero-stat-label">Staking Fee</div>
+            </div>
+            <div>
+                <div class="hero-stat-value">99.9%</div>
+                <div class="hero-stat-label">Uptime</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Core Services</span>
+            <h2 class="section-title">Everything You Need to Run Nodes and Stake</h2>
+            <p class="section-subtitle">From one-click staking to dedicated bare-metal servers, Allnodes handles the infrastructure so you can focus on earning.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">&#128176;</div>
+                <h3>Non-Custodial Staking</h3>
+                <p>Delegate your tokens to Allnodes validators with 0% commission. Your keys never leave your wallet — stake from Ledger, Trezor, or any compatible wallet and earn rewards directly.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#9881;</div>
+                <h3>Validator Hosting</h3>
+                <p>Run your own validator node without managing hardware. Provide your validator keys, choose a region, and Allnodes handles uptime, updates, and monitoring across 15 global data centers.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">&#128421;</div>
+                <h3>Bare-Metal Servers</h3>
+                <p>Dedicated servers optimized for high-performance chains like Solana. AMD EPYC Turin processors, from 24-core to 64-core, deployed in ISO 27001-certified data centers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="networks-section" id="networks">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Supported Networks</span>
+            <h2 class="section-title">Stake Across 120+ Blockchains</h2>
+            <p class="section-subtitle">From major Layer 1s to emerging chains — Allnodes supports the broadest range of networks for staking and node hosting.</p>
+        </div>
+        <div class="networks-scroll">
+            <div class="network-chip">
+                <div class="network-chip-icon">ETH</div>
+                <div class="network-chip-name">Ethereum</div>
+                <div class="network-chip-apy">~3.5% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">SOL</div>
+                <div class="network-chip-name">Solana</div>
+                <div class="network-chip-apy">~7% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">ATOM</div>
+                <div class="network-chip-name">Cosmos</div>
+                <div class="network-chip-apy">~15% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">DOT</div>
+                <div class="network-chip-name">Polkadot</div>
+                <div class="network-chip-apy">~12% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">ADA</div>
+                <div class="network-chip-name">Cardano</div>
+                <div class="network-chip-apy">~3% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">AVAX</div>
+                <div class="network-chip-name">Avalanche</div>
+                <div class="network-chip-apy">~8% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">NEAR</div>
+                <div class="network-chip-name">NEAR</div>
+                <div class="network-chip-apy">~9% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">SUI</div>
+                <div class="network-chip-name">Sui</div>
+                <div class="network-chip-apy">~4% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">POL</div>
+                <div class="network-chip-name">Polygon</div>
+                <div class="network-chip-apy">~4% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">INJ</div>
+                <div class="network-chip-name">Injective</div>
+                <div class="network-chip-apy">~15% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">TIA</div>
+                <div class="network-chip-name">Celestia</div>
+                <div class="network-chip-apy">~12% APY</div>
+            </div>
+            <div class="network-chip">
+                <div class="network-chip-icon">+109</div>
+                <div class="network-chip-name">And More</div>
+                <div class="network-chip-apy">View All</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Why Allnodes</span>
+            <h2 class="section-title">Built for Serious Stakers and Node Operators</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-row">
+                <div class="feature-num">1</div>
+                <div>
+                    <h3>Non-Custodial by Design</h3>
+                    <p>Your private keys stay with you at all times. Allnodes never stores or accesses your keys — hardware wallet integration is the recommended standard.</p>
+                </div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-num">2</div>
+                <div>
+                    <h3>Global Infrastructure</h3>
+                    <p>Nodes deployed across 15 cities in North America, Europe, and Asia. ISO 27001-certified data centers ensure enterprise-grade reliability.</p>
+                </div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-num">3</div>
+                <div>
+                    <h3>Multilayered Monitoring</h3>
+                    <p>Automated alerts, performance dashboards, and sentry node configuration keep your validators online and earning. 99.9%+ uptime across all supported chains.</p>
+                </div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-num">4</div>
+                <div>
+                    <h3>Unlimited Free Updates</h3>
+                    <p>Network upgrades, chain forks, and software patches are handled automatically at no extra cost. Your nodes always run the latest stable version.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pricing" id="pricing">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">Pricing</span>
+            <h2 class="section-title">Transparent, Predictable Pricing</h2>
+            <p class="section-subtitle">No setup fees. No hidden charges. Choose the plan that fits your staking strategy.</p>
+        </div>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <h3>Staking</h3>
+                <div class="pricing-price">$5<span>/month</span></div>
+                <div class="pricing-desc">Per validator, 0% commission</div>
+                <ul class="pricing-list">
+                    <li>Non-custodial delegation</li>
+                    <li>0% staking fee</li>
+                    <li>120+ networks</li>
+                    <li>Hardware wallet support</li>
+                    <li>Email & Telegram alerts</li>
+                </ul>
+                <a href="CTA_LINK" class="btn-primary">Start Staking</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Validator Hosting</h3>
+                <div class="pricing-price">$49<span>/month</span></div>
+                <div class="pricing-desc">Fully managed validator node</div>
+                <ul class="pricing-list">
+                    <li>Dedicated node resources</li>
+                    <li>24/7 monitoring & alerts</li>
+                    <li>Auto-updates & patches</li>
+                    <li>Sentry node available</li>
+                    <li>Hourly billing option</li>
+                </ul>
+                <a href="CTA_LINK" class="btn-primary">Host Validator</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Bare-Metal</h3>
+                <div class="pricing-price">$480<span>/month</span></div>
+                <div class="pricing-desc">Dedicated server, full control</div>
+                <ul class="pricing-list">
+                    <li>AMD EPYC Turin CPUs</li>
+                    <li>Solana-optimized</li>
+                    <li>ISO 27001 data centers</li>
+                    <li>Root access</li>
+                    <li>Custom configuration</li>
+                </ul>
+                <a href="CTA_LINK" class="btn-primary">Get Server</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="security">
+    <div class="container">
+        <div class="security-banner">
+            <div>
+                <span class="section-label">Security</span>
+                <h2 class="section-title">Your Keys. Your Tokens. Always.</h2>
+                <p class="section-subtitle">Allnodes is built on the principle that you should never give up control of your assets to earn rewards.</p>
+            </div>
+            <ul class="security-points">
+                <li><span class="security-check">&#10003;</span>Non-custodial architecture — private keys never leave your device</li>
+                <li><span class="security-check">&#10003;</span>Hardware wallet integration with Ledger, Trezor, and Keystone</li>
+                <li><span class="security-check">&#10003;</span>ISO 27001-certified data centers in 15 global locations</li>
+                <li><span class="security-check">&#10003;</span>Multilayered monitoring with automated failover</li>
+                <li><span class="security-check">&#10003;</span>Sentry node configuration to prevent DDoS attacks</li>
+                <li><span class="security-check">&#10003;</span>Regular security audits and transparent incident reporting</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="faq" id="faq">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">What is Allnodes and how does it work?</button>
+                <div class="faq-answer"><p>Allnodes is a non-custodial platform for staking and node hosting across more than 120 blockchain networks. Users can run validator or full nodes for networks like Ethereum, Solana, Cosmos, Polkadot, and Cardano, while keeping control of their private keys. The platform handles the technical setup and server maintenance, so you don't need special hardware or 24/7 monitoring.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Is staking with Allnodes safe?</button>
+                <div class="faq-answer"><p>Allnodes is designed to be non-custodial, so your private keys never leave your device and are not stored on Allnodes servers. For added security, the platform supports hardware wallets, letting you sign transactions offline. Node infrastructure is hosted in ISO 27001-certified data centers with strict security controls.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">How much does Allnodes cost?</button>
+                <div class="faq-answer"><p>Staking services start at $5 per month with 0% validator commission. Pricing varies based on the type of node or validator and network. Hourly billing options are available for temporary needs. No setup fees or hidden charges.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Which networks are supported?</button>
+                <div class="faq-answer"><p>Allnodes supports over 120 blockchain networks including Ethereum, Solana, Cosmos, Polkadot, Cardano, Avalanche, NEAR, Sui, Polygon, Injective, Celestia, and many more. The supported list is updated frequently as new networks launch.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">Do I keep control of my keys?</button>
+                <div class="faq-answer"><p>Yes, Allnodes is fully non-custodial. Private keys remain in your possession at all times. The platform recommends using a hardware wallet for the best security. Allnodes never asks for or stores your keys.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">What uptime does Allnodes guarantee?</button>
+                <div class="faq-answer"><p>Allnodes delivers over 99.9% uptime, backed by multilayered monitoring and infrastructure in 15 cities worldwide. This ensures your validator stays online for maximum rewards and minimal slashing risk.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Start Staking?</h2>
+        <p>Join thousands of validators and stakers on the most trusted non-custodial platform.</p>
+        <a href="CTA_LINK" class="btn-primary">Get Started Now</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="https://allnodes-site.github.io" class="nav-logo">
+                    <div class="nav-logo-icon">A</div>
+                    Allnodes
+                </a>
+                <p>Non-custodial staking, validator hosting, and node services for 120+ blockchain networks. Trusted by thousands of validators worldwide.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="#services">Staking</a>
+                <a href="#services">Validator Hosting</a>
+                <a href="#services">Bare-Metal Servers</a>
+                <a href="#networks">Supported Networks</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="#faq">FAQ</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#security">Security</a>
+            </div>
+            <div class="footer-col">
+                <h4>Community</h4>
+                <a href="SOCIAL_URL_TWITTER" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="SOCIAL_URL_DISCORD" target="_blank" rel="noopener noreferrer">Discord</a>
+                <a href="SOCIAL_URL_TELEGRAM" target="_blank" rel="noopener noreferrer">Telegram</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Allnodes. All rights reserved.</span>
+            <span>Non-Custodial Infrastructure</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.querySelector('.hamburger').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('active')});
+document.querySelectorAll('.faq-question').forEach(function(b){b.addEventListener('click',function(){var i=this.parentElement;document.querySelectorAll('.faq-item').forEach(function(o){if(o!==i)o.classList.remove('active')});i.classList.toggle('active')})});
+document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.querySelector('.nav-links').classList.remove('active')})});
+</script>
+
+</body>
+</html>
